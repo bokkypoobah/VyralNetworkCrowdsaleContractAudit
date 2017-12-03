@@ -6,6 +6,24 @@ Status: Work in progress
 
 Commits [1306a68](https://github.com/vyralnetwork/vyral/commit/1306a688cddba31cce19b0cb149b2f4e38aa54bb).
 
+### Deployed Contracts
+
+The following contracts were deployed to the Ethereum mainnet, but the source code was not verified at the addresses except for the MultiSig:
+
+https://etherscan.io/address/0x3bbc4826daf4ac26c4365e83299db54015341512#code
+
+* Campaign:      [0x1f204b70832b0df002ff7500e7b2fac62b5dbe33](https://etherscan.io/address/0x1f204b70832b0df002ff7500e7b2fac62b5dbe33#code)
+* DateTime:      [0x3bbc4826daf4ac26c4365e83299db54015341512](https://etherscan.io/address/0x3bbc4826daf4ac26c4365e83299db54015341512#code)
+* MultiSig:      [0x4e4aE4B72c960Ad91fab1e18253D16cDAc6a091c](https://etherscan.io/address/0x4e4aE4B72c960Ad91fab1e18253D16cDAc6a091c#code)
+* PresaleBonuses:[0x9cd2a58a1c700c5cc13f04c4fddc215b7af89c7e](https://etherscan.io/address/0x9cd2a58a1c700c5cc13f04c4fddc215b7af89c7e#code)
+* Referral:      [0x94f6ced94445ef07a0e8d5e7394c365a7b43bf62](https://etherscan.io/address/0x94f6ced94445ef07a0e8d5e7394c365a7b43bf62#code)
+* SafeMath:      [0x84bfc103e575cc4f3f5b24437cccef4ee93c309b](https://etherscan.io/address/0x84bfc103e575cc4f3f5b24437cccef4ee93c309b#code)
+* Share:         [0x6f69ef58ddec9cd6ee428253c607a0acd13da05f](https://etherscan.io/address/0x6f69ef58ddec9cd6ee428253c607a0acd13da05f#code)
+* TieredPayoff:  [0x57efbaf2e135ad73018aed5f07273b7a0bb2ab54](https://etherscan.io/address/0x57efbaf2e135ad73018aed5f07273b7a0bb2ab54#code)
+* Vesting:       [0x6dfbeaf92d8d4455d74bc56bd37a165c5970a4d7](https://etherscan.io/address/0x6dfbeaf92d8d4455d74bc56bd37a165c5970a4d7#code)
+* VyralSale:     [0x708352cd28ea06e6bbd5c1a9408b4966ac1226e4](https://etherscan.io/address/0x708352cd28ea06e6bbd5c1a9408b4966ac1226e4#code)
+
+
 <br />
 
 <hr />
@@ -27,14 +45,14 @@ Commits [1306a68](https://github.com/vyralnetwork/vyral/commit/1306a688cddba31cc
 
 ## Code Review
 
-* [ ] [code-review/math/SafeMath.md](code-review/math/SafeMath.md)
-  * [ ] library SafeMath
+* [x] [code-review/math/SafeMath.md](code-review/math/SafeMath.md)
+  * [x] library SafeMath
+* [x] [code-review/traits/Ownable.md](code-review/traits/Ownable.md)
+  * [x] contract Ownable
 * [ ] [code-review/referral/Referral.md](code-review/referral/Referral.md)
   * [ ] library Referral
 * [ ] [code-review/referral/TieredPayoff.md](code-review/referral/TieredPayoff.md)
   * [ ] library TieredPayoff
-* [ ] [code-review/traits/Ownable.md](code-review/traits/Ownable.md)
-  * [ ] contract Ownable
 * [ ] [code-review/Campaign.md](code-review/Campaign.md)
   * [ ] contract Campaign is Ownable
 * [ ] [code-review/PresaleBonuses.md](code-review/PresaleBonuses.md)
@@ -45,6 +63,18 @@ Commits [1306a68](https://github.com/vyralnetwork/vyral/commit/1306a688cddba31cc
   * [ ] contract Vesting is Ownable
 * [ ] [code-review/VyralSale.md](code-review/VyralSale.md)
   * [ ] contract VyralSale is Ownable
+
+<br />
+
+### Tokens
+
+* [ ] [code-review-tokens/Token.md](code-review-tokens/Token.md)
+  * [ ] contract Token
+* [ ] [code-review-tokens/StandardToken.md](code-review-tokens/StandardToken.md)
+  * [ ] contract StandardToken is Token
+* [ ] [code-review-tokens/HumanStandardToken.md](code-review-tokens/HumanStandardToken.md)
+  * [ ] contract HumanStandardToken is StandardToken
+
 
 <br />
 
