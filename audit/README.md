@@ -36,8 +36,9 @@ https://etherscan.io/address/0x3bbc4826daf4ac26c4365e83299db54015341512#code
 
 ## Recommendations
 
-* **LOW IMPORTANCE** *SafeMath* could use `require(...)` instead of `assert(...)` to save on gas in the case of an error
+* **LOW IMPORTANCE** *SafeMath* could possibly use `require(...)` instead of `assert(...)` to save on gas in the case of an error
 * **LOW IMPORTANCE** *Ownable* could be improved by using the `acceptOwnership(...)` [pattern](https://github.com/openanx/OpenANXToken/blob/master/contracts/Owned.sol#L51-L55)
+* **LOW IMPORTANCE** *HumanStandardToken* should have a `Transfer(address(0), msg.sender, _initialAmount)` event logged in the constructor
 
 <br />
 
@@ -68,12 +69,12 @@ https://etherscan.io/address/0x3bbc4826daf4ac26c4365e83299db54015341512#code
 
 ### Tokens
 
-* [ ] [code-review-tokens/Token.md](code-review-tokens/Token.md)
-  * [ ] contract Token
-* [ ] [code-review-tokens/StandardToken.md](code-review-tokens/StandardToken.md)
-  * [ ] contract StandardToken is Token
-* [ ] [code-review-tokens/HumanStandardToken.md](code-review-tokens/HumanStandardToken.md)
-  * [ ] contract HumanStandardToken is StandardToken
+* [x] [code-review-tokens/Token.md](code-review-tokens/Token.md)
+  * [x] contract Token
+* [x] [code-review-tokens/StandardToken.md](code-review-tokens/StandardToken.md)
+  * [x] contract StandardToken is Token
+* [x] [code-review-tokens/HumanStandardToken.md](code-review-tokens/HumanStandardToken.md)
+  * [x] contract HumanStandardToken is StandardToken
 
 
 <br />
