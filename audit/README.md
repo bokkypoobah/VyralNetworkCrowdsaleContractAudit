@@ -34,6 +34,15 @@ https://etherscan.io/address/0x3bbc4826daf4ac26c4365e83299db54015341512#code
 
 <hr />
 
+## Testing
+
+[ethereum-datetime-contracts/api.sol](ethereum-datetime-contracts/api.sol) and [ethereum-datetime-contracts/DateTime.sol](ethereum-datetime-contracts/DateTime.sol) commit
+[1c8e514](https://github.com/pipermerriam/ethereum-datetime/commit/1c8e514adc57673d367ab91af4fd86186f1ea7f4).
+
+<br />
+
+<hr />
+
 ## Recommendations
 
 * **LOW IMPORTANCE** *SafeMath* could possibly use `require(...)` instead of `assert(...)` to save on gas in the case of an error
