@@ -36,10 +36,10 @@ contract Share is HumanStandardToken, Ownable {
     ///-----------------
 
     /// Off on deployment.
-    bool isTransferable = false;
+    bool public isTransferable = false;
 
     /// Bonus tokens are locked on deployment
-    bool isBonusLocked = true;
+    bool public isBonusLocked = true;
 
     /// Allows the owner to transfer tokens whenever, but others to only transfer after owner says so.
     modifier canBeTransferred {

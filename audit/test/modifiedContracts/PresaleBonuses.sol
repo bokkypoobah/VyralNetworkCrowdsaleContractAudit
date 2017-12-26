@@ -1,7 +1,7 @@
 pragma solidity ^0.4.18;
 
 import "./math/SafeMath.sol";
-import "./api.sol";
+import "../lib/ethereum-datetime/contracts/api.sol";
 
 library PresaleBonuses {
     using SafeMath for uint;
