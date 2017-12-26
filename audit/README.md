@@ -94,3 +94,285 @@ The following files are for the testing framekwork:
 
 * [ ] [../contracts/Migrations.sol](../contracts/Migrations.sol)
   * [ ] contract Migrations
+
+<br />
+
+### Compiler Warnings
+
+```
+Compiling ---------- Campaign.sol ----------
+Token.sol:20:5: Warning: No visibility specified. Defaulting to "public".
+    function balanceOf(address _owner) constant returns (uint256 balance);
+    ^--------------------------------------------------------------------^
+Token.sol:26:5: Warning: No visibility specified. Defaulting to "public".
+    function transfer(address _to, uint256 _value) returns (bool success);
+    ^--------------------------------------------------------------------^
+Token.sol:33:5: Warning: No visibility specified. Defaulting to "public".
+    function transferFrom(address _from, address _to, uint256 _value) returns (bool success);
+    ^---------------------------------------------------------------------------------------^
+Token.sol:39:5: Warning: No visibility specified. Defaulting to "public".
+    function approve(address _spender, uint256 _value) returns (bool success);
+    ^------------------------------------------------------------------------^
+Token.sol:44:5: Warning: No visibility specified. Defaulting to "public".
+    function allowance(address _owner, address _spender) constant returns (uint256 remaining);
+    ^----------------------------------------------------------------------------------------^
+StandardToken.sol:15:5: Warning: No visibility specified. Defaulting to "public".
+    function transfer(address _to, uint256 _value) returns (bool success) {
+    ^
+Spanning multiple lines.
+StandardToken.sol:27:5: Warning: No visibility specified. Defaulting to "public".
+    function transferFrom(address _from, address _to, uint256 _value) returns (bool success) {
+    ^
+Spanning multiple lines.
+StandardToken.sol:38:5: Warning: No visibility specified. Defaulting to "public".
+    function balanceOf(address _owner) constant returns (uint256 balance) {
+    ^
+Spanning multiple lines.
+StandardToken.sol:42:5: Warning: No visibility specified. Defaulting to "public".
+    function approve(address _spender, uint256 _value) returns (bool success) {
+    ^
+Spanning multiple lines.
+StandardToken.sol:48:5: Warning: No visibility specified. Defaulting to "public".
+    function allowance(address _owner, address _spender) constant returns (uint256 remaining) {
+    ^
+Spanning multiple lines.
+HumanStandardToken.sol:33:5: Warning: No visibility specified. Defaulting to "public".
+    function HumanStandardToken(
+    ^
+Spanning multiple lines.
+HumanStandardToken.sol:47:5: Warning: No visibility specified. Defaulting to "public".
+    function approveAndCall(address _spender, uint256 _value, bytes _extraData) returns (bool success) {
+    ^
+Spanning multiple lines.
+Share.sol:114:5: Warning: No visibility specified. Defaulting to "public".
+    function lockedBalanceOf(
+    ^
+Spanning multiple lines.
+referral/TieredPayoff.sol:62:9: Warning: Variable is declared as a storage pointer. Use an explicit "storage" keyword to silence this warning.
+        Referral.Node node = self.nodes[_referrer];
+        ^----------------^
+HumanStandardToken.sol:54:46: Warning: "sha3" has been deprecated in favour of "keccak256"
+        require(_spender.call(bytes4(bytes32(sha3("receiveApproval(address,uint256,address,bytes)"))), msg.sender, _value, this, _extraData));
+                                             ^----------------------------------------------------^
+Compiling ---------- DateTime.sol ----------
+Compiling ---------- PresaleBonuses.sol ----------
+api.sol:6:9: Warning: No visibility specified. Defaulting to "public".
+        function isLeapYear(uint16 year) constant returns (bool);
+        ^-------------------------------------------------------^
+api.sol:7:9: Warning: No visibility specified. Defaulting to "public".
+        function getYear(uint timestamp) constant returns (uint16);
+        ^---------------------------------------------------------^
+api.sol:8:9: Warning: No visibility specified. Defaulting to "public".
+        function getMonth(uint timestamp) constant returns (uint8);
+        ^---------------------------------------------------------^
+api.sol:9:9: Warning: No visibility specified. Defaulting to "public".
+        function getDay(uint timestamp) constant returns (uint8);
+        ^-------------------------------------------------------^
+api.sol:10:9: Warning: No visibility specified. Defaulting to "public".
+        function getHour(uint timestamp) constant returns (uint8);
+        ^--------------------------------------------------------^
+api.sol:11:9: Warning: No visibility specified. Defaulting to "public".
+        function getMinute(uint timestamp) constant returns (uint8);
+        ^----------------------------------------------------------^
+api.sol:12:9: Warning: No visibility specified. Defaulting to "public".
+        function getSecond(uint timestamp) constant returns (uint8);
+        ^----------------------------------------------------------^
+api.sol:13:9: Warning: No visibility specified. Defaulting to "public".
+        function getWeekday(uint timestamp) constant returns (uint8);
+        ^-----------------------------------------------------------^
+api.sol:14:9: Warning: No visibility specified. Defaulting to "public".
+        function toTimestamp(uint16 year, uint8 month, uint8 day) constant returns (uint timestamp);
+        ^------------------------------------------------------------------------------------------^
+api.sol:15:9: Warning: No visibility specified. Defaulting to "public".
+        function toTimestamp(uint16 year, uint8 month, uint8 day, uint8 hour) constant returns (uint timestamp);
+        ^------------------------------------------------------------------------------------------------------^
+api.sol:16:9: Warning: No visibility specified. Defaulting to "public".
+        function toTimestamp(uint16 year, uint8 month, uint8 day, uint8 hour, uint8 minute) constant returns (uint timestamp);
+        ^--------------------------------------------------------------------------------------------------------------------^
+api.sol:17:9: Warning: No visibility specified. Defaulting to "public".
+        function toTimestamp(uint16 year, uint8 month, uint8 day, uint8 hour, uint8 minute, uint8 second) constant returns (uint timestamp);
+        ^----------------------------------------------------------------------------------------------------------------------------------^
+api.sol:1:1: Warning: Source file does not specify required compiler version!Consider adding "pragma solidity ^0.4.18
+contract DateTimeAPI {
+^
+Spanning multiple lines.
+Compiling ---------- referral/Referral.sol ----------
+Compiling ---------- SafeMath.sol ----------
+Compiling ---------- Share.sol ----------
+Token.sol:20:5: Warning: No visibility specified. Defaulting to "public".
+    function balanceOf(address _owner) constant returns (uint256 balance);
+    ^--------------------------------------------------------------------^
+Token.sol:26:5: Warning: No visibility specified. Defaulting to "public".
+    function transfer(address _to, uint256 _value) returns (bool success);
+    ^--------------------------------------------------------------------^
+Token.sol:33:5: Warning: No visibility specified. Defaulting to "public".
+    function transferFrom(address _from, address _to, uint256 _value) returns (bool success);
+    ^---------------------------------------------------------------------------------------^
+Token.sol:39:5: Warning: No visibility specified. Defaulting to "public".
+    function approve(address _spender, uint256 _value) returns (bool success);
+    ^------------------------------------------------------------------------^
+Token.sol:44:5: Warning: No visibility specified. Defaulting to "public".
+    function allowance(address _owner, address _spender) constant returns (uint256 remaining);
+    ^----------------------------------------------------------------------------------------^
+StandardToken.sol:15:5: Warning: No visibility specified. Defaulting to "public".
+    function transfer(address _to, uint256 _value) returns (bool success) {
+    ^
+Spanning multiple lines.
+StandardToken.sol:27:5: Warning: No visibility specified. Defaulting to "public".
+    function transferFrom(address _from, address _to, uint256 _value) returns (bool success) {
+    ^
+Spanning multiple lines.
+StandardToken.sol:38:5: Warning: No visibility specified. Defaulting to "public".
+    function balanceOf(address _owner) constant returns (uint256 balance) {
+    ^
+Spanning multiple lines.
+StandardToken.sol:42:5: Warning: No visibility specified. Defaulting to "public".
+    function approve(address _spender, uint256 _value) returns (bool success) {
+    ^
+Spanning multiple lines.
+StandardToken.sol:48:5: Warning: No visibility specified. Defaulting to "public".
+    function allowance(address _owner, address _spender) constant returns (uint256 remaining) {
+    ^
+Spanning multiple lines.
+HumanStandardToken.sol:33:5: Warning: No visibility specified. Defaulting to "public".
+    function HumanStandardToken(
+    ^
+Spanning multiple lines.
+HumanStandardToken.sol:47:5: Warning: No visibility specified. Defaulting to "public".
+    function approveAndCall(address _spender, uint256 _value, bytes _extraData) returns (bool success) {
+    ^
+Spanning multiple lines.
+Share.sol:114:5: Warning: No visibility specified. Defaulting to "public".
+    function lockedBalanceOf(
+    ^
+Spanning multiple lines.
+HumanStandardToken.sol:54:46: Warning: "sha3" has been deprecated in favour of "keccak256"
+        require(_spender.call(bytes4(bytes32(sha3("receiveApproval(address,uint256,address,bytes)"))), msg.sender, _value, this, _extraData));
+                                             ^----------------------------------------------------^
+Compiling ---------- referral/TieredPayoff.sol ----------
+referral/TieredPayoff.sol:62:9: Warning: Variable is declared as a storage pointer. Use an explicit "storage" keyword to silence this warning.
+        Referral.Node node = self.nodes[_referrer];
+        ^----------------^
+Compiling ---------- Vesting.sol ----------
+Token.sol:20:5: Warning: No visibility specified. Defaulting to "public".
+    function balanceOf(address _owner) constant returns (uint256 balance);
+    ^--------------------------------------------------------------------^
+Token.sol:26:5: Warning: No visibility specified. Defaulting to "public".
+    function transfer(address _to, uint256 _value) returns (bool success);
+    ^--------------------------------------------------------------------^
+Token.sol:33:5: Warning: No visibility specified. Defaulting to "public".
+    function transferFrom(address _from, address _to, uint256 _value) returns (bool success);
+    ^---------------------------------------------------------------------------------------^
+Token.sol:39:5: Warning: No visibility specified. Defaulting to "public".
+    function approve(address _spender, uint256 _value) returns (bool success);
+    ^------------------------------------------------------------------------^
+Token.sol:44:5: Warning: No visibility specified. Defaulting to "public".
+    function allowance(address _owner, address _spender) constant returns (uint256 remaining);
+    ^----------------------------------------------------------------------------------------^
+Compiling ---------- VyralSale.sol ----------
+Token.sol:20:5: Warning: No visibility specified. Defaulting to "public".
+    function balanceOf(address _owner) constant returns (uint256 balance);
+    ^--------------------------------------------------------------------^
+Token.sol:26:5: Warning: No visibility specified. Defaulting to "public".
+    function transfer(address _to, uint256 _value) returns (bool success);
+    ^--------------------------------------------------------------------^
+Token.sol:33:5: Warning: No visibility specified. Defaulting to "public".
+    function transferFrom(address _from, address _to, uint256 _value) returns (bool success);
+    ^---------------------------------------------------------------------------------------^
+Token.sol:39:5: Warning: No visibility specified. Defaulting to "public".
+    function approve(address _spender, uint256 _value) returns (bool success);
+    ^------------------------------------------------------------------------^
+Token.sol:44:5: Warning: No visibility specified. Defaulting to "public".
+    function allowance(address _owner, address _spender) constant returns (uint256 remaining);
+    ^----------------------------------------------------------------------------------------^
+StandardToken.sol:15:5: Warning: No visibility specified. Defaulting to "public".
+    function transfer(address _to, uint256 _value) returns (bool success) {
+    ^
+Spanning multiple lines.
+StandardToken.sol:27:5: Warning: No visibility specified. Defaulting to "public".
+    function transferFrom(address _from, address _to, uint256 _value) returns (bool success) {
+    ^
+Spanning multiple lines.
+StandardToken.sol:38:5: Warning: No visibility specified. Defaulting to "public".
+    function balanceOf(address _owner) constant returns (uint256 balance) {
+    ^
+Spanning multiple lines.
+StandardToken.sol:42:5: Warning: No visibility specified. Defaulting to "public".
+    function approve(address _spender, uint256 _value) returns (bool success) {
+    ^
+Spanning multiple lines.
+StandardToken.sol:48:5: Warning: No visibility specified. Defaulting to "public".
+    function allowance(address _owner, address _spender) constant returns (uint256 remaining) {
+    ^
+Spanning multiple lines.
+HumanStandardToken.sol:33:5: Warning: No visibility specified. Defaulting to "public".
+    function HumanStandardToken(
+    ^
+Spanning multiple lines.
+HumanStandardToken.sol:47:5: Warning: No visibility specified. Defaulting to "public".
+    function approveAndCall(address _spender, uint256 _value, bytes _extraData) returns (bool success) {
+    ^
+Spanning multiple lines.
+Share.sol:114:5: Warning: No visibility specified. Defaulting to "public".
+    function lockedBalanceOf(
+    ^
+Spanning multiple lines.
+api.sol:6:9: Warning: No visibility specified. Defaulting to "public".
+        function isLeapYear(uint16 year) constant returns (bool);
+        ^-------------------------------------------------------^
+api.sol:7:9: Warning: No visibility specified. Defaulting to "public".
+        function getYear(uint timestamp) constant returns (uint16);
+        ^---------------------------------------------------------^
+api.sol:8:9: Warning: No visibility specified. Defaulting to "public".
+        function getMonth(uint timestamp) constant returns (uint8);
+        ^---------------------------------------------------------^
+api.sol:9:9: Warning: No visibility specified. Defaulting to "public".
+        function getDay(uint timestamp) constant returns (uint8);
+        ^-------------------------------------------------------^
+api.sol:10:9: Warning: No visibility specified. Defaulting to "public".
+        function getHour(uint timestamp) constant returns (uint8);
+        ^--------------------------------------------------------^
+api.sol:11:9: Warning: No visibility specified. Defaulting to "public".
+        function getMinute(uint timestamp) constant returns (uint8);
+        ^----------------------------------------------------------^
+api.sol:12:9: Warning: No visibility specified. Defaulting to "public".
+        function getSecond(uint timestamp) constant returns (uint8);
+        ^----------------------------------------------------------^
+api.sol:13:9: Warning: No visibility specified. Defaulting to "public".
+        function getWeekday(uint timestamp) constant returns (uint8);
+        ^-----------------------------------------------------------^
+api.sol:14:9: Warning: No visibility specified. Defaulting to "public".
+        function toTimestamp(uint16 year, uint8 month, uint8 day) constant returns (uint timestamp);
+        ^------------------------------------------------------------------------------------------^
+api.sol:15:9: Warning: No visibility specified. Defaulting to "public".
+        function toTimestamp(uint16 year, uint8 month, uint8 day, uint8 hour) constant returns (uint timestamp);
+        ^------------------------------------------------------------------------------------------------------^
+api.sol:16:9: Warning: No visibility specified. Defaulting to "public".
+        function toTimestamp(uint16 year, uint8 month, uint8 day, uint8 hour, uint8 minute) constant returns (uint timestamp);
+        ^--------------------------------------------------------------------------------------------------------------------^
+api.sol:17:9: Warning: No visibility specified. Defaulting to "public".
+        function toTimestamp(uint16 year, uint8 month, uint8 day, uint8 hour, uint8 minute, uint8 second) constant returns (uint timestamp);
+        ^----------------------------------------------------------------------------------------------------------------------------------^
+api.sol:1:1: Warning: Source file does not specify required compiler version!Consider adding "pragma solidity ^0.4.18
+contract DateTimeAPI {
+^
+Spanning multiple lines.
+referral/TieredPayoff.sol:62:9: Warning: Variable is declared as a storage pointer. Use an explicit "storage" keyword to silence this warning.
+        Referral.Node node = self.nodes[_referrer];
+        ^----------------^
+HumanStandardToken.sol:54:46: Warning: "sha3" has been deprecated in favour of "keccak256"
+        require(_spender.call(bytes4(bytes32(sha3("receiveApproval(address,uint256,address,bytes)"))), msg.sender, _value, this, _extraData));
+                                             ^----------------------------------------------------^
+VyralSale.sol:82:33: Warning: Initial value for constant variable has to be compile-time constant. This will fail to compile with the next breaking version change.
+    uint public constant TEAM = TOTAL_SUPPLY.div(7);
+                                ^-----------------^
+VyralSale.sol:84:37: Warning: Initial value for constant variable has to be compile-time constant. This will fail to compile with the next breaking version change.
+    uint public constant PARTNERS = TOTAL_SUPPLY.div(7);
+                                    ^-----------------^
+VyralSale.sol:86:42: Warning: Initial value for constant variable has to be compile-time constant. This will fail to compile with the next breaking version change.
+    uint public constant VYRAL_REWARDS = TOTAL_SUPPLY.div(7).mul(2);
+                                         ^------------------------^
+VyralSale.sol:88:44: Warning: Initial value for constant variable has to be compile-time constant. This will fail to compile with the next breaking version change.
+    uint public constant SALE_ALLOCATION = TOTAL_SUPPLY.div(7).mul(3);
+                                           ^------------------------^
+```

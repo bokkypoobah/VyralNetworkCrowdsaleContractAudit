@@ -1,12 +1,3 @@
-# TieredPayoff
-
-Source file [../../../contracts/referral/TieredPayoff.sol](../../../contracts/referral/TieredPayoff.sol).
-
-<br />
-
-<hr />
-
-```javascript
 pragma solidity ^0.4.18;
 
 import "./Referral.sol";
@@ -114,7 +105,6 @@ library TieredPayoff {
      * Returns bonus percentage for a given number of referrals
      * based on comments above.
      */
-    // BK Ok - Pure function
     function getBonusPercentage(
         uint _referrals
     )
@@ -122,19 +112,12 @@ library TieredPayoff {
         pure
         returns (uint)
     {
-        // BK Ok
         if (_referrals == 0) {
-            // BK Ok
             return 0;
         }
-        // BK Ok
         if (_referrals >= 27) {
-            // BK Ok
             return 33;
         }
-        // BK Ok
         return _referrals + 6;
     }
 }
-
-```
