@@ -354,6 +354,17 @@ function printCampaignContractDetails() {
     });
     logCampaignCreatedEvents.stopWatching();
 
+    var payoffCalcEvents = contract.PayoffCalc({}, { fromBlock: campaignFromBlock, toBlock: latestBlock });
+    i = 0;
+    payoffCalcEvents.watch(function (error, result) {
+      console.log("RESULT: PayoffCalc " + i++ + " #" + result.blockNumber + " referrer=" + result.args.referrer +
+        " degree=" + result.args.degree +
+        " tierPercentage=" + result.args.tierPercentage +
+        " shares=" + result.args.shares.shift(-18) +
+        " reward=" + result.args.reward.shift(-18));
+    });
+    payoffCalcEvents.stopWatching();
+
     var logRewardAllocatedEvents = contract.LogRewardAllocated({}, { fromBlock: campaignFromBlock, toBlock: latestBlock });
     i = 0;
     logRewardAllocatedEvents.watch(function (error, result) {

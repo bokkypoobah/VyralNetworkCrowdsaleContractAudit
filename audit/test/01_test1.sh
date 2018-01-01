@@ -88,7 +88,9 @@ printf "END_DATE           = '$END_DATE' '$END_DATE_S'\n" | tee -a $TEST1OUTPUT
 `cp -rp ../../installed_contracts/tokens/contracts/HumanStandardToken.sol .`
 `cp -rp ../../installed_contracts/tokens/contracts/StandardToken.sol .`
 `cp -rp ../../installed_contracts/tokens/contracts/Token.sol .`
-`cp -rp modifiedContracts/* .`
+`cp -rp modifiedContracts/PresaleBonuses.sol .`
+`cp -rp modifiedContracts/TieredPayoff.sol ./referral/`
+`cp -rp modifiedContracts/Campaign.sol .`
 
 # --- Modify parameters ---
 `perl -pi -e "s/installed_contracts\/tokens\/contracts\//\.\//" *.sol`
