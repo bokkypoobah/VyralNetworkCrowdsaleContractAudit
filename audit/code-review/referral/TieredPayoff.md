@@ -7,8 +7,10 @@ Source file [../../../contracts/referral/TieredPayoff.sol](../../../contracts/re
 <hr />
 
 ```javascript
+// BK Ok
 pragma solidity ^0.4.18;
 
+// BK Next 2 Ok
 import "./Referral.sol";
 import '../math/SafeMath.sol';
 
@@ -42,7 +44,9 @@ import '../math/SafeMath.sol';
  * 26 Vyral Referrals - 32% bonus
  * 27 Vyral Referrals - 33% bonus
  */
+// BK Ok
 library TieredPayoff {
+    // BK Ok
     using SafeMath for uint;
 
     /**
@@ -60,6 +64,7 @@ library TieredPayoff {
      * For degree > 27:
      * tier% of shares of newly joined node
      */
+    // BK Ok - View function
     function payoff(
         Referral.Tree storage self,
         address _referrer
@@ -68,27 +73,40 @@ library TieredPayoff {
         view
         returns (uint)
     {
+        // BK Ok
         Referral.Node node = self.nodes[_referrer];
 
+        // BK Ok
         if(!node.exists) {
+            // BK Ok
             return 0;
         }
 
+        // BK Next 2 Ok
         uint reward = 0;
         uint shares = 0;
+        // BK Ok
         uint degree = node.inviteeIndex.length;
+        // BK Ok
         uint tierPercentage = getBonusPercentage(node.inviteeIndex.length);
 
         // No bonus if there are no invitees
+        // BK Ok
         if(degree == 0) {
+            // BK Ok
             return 0;
         }
 
+        // BK Ok
         assert(tierPercentage > 0);
 
+        // BK Ok
         if(degree == 1) {
+            // BK Ok
             shares = node.invitees[node.inviteeIndex[0]];
+            // BK Ok
             reward = reward.add(shares.mul(tierPercentage).div(100));
+            // BK Ok
             return reward;
         }
 
@@ -96,17 +114,24 @@ library TieredPayoff {
         // For 2 <= degree <= 27
         //    add 1% from the first k-1 nodes
         //    add tier% from the last node
+        // BK Ok
         if(degree >= 2 && degree <= 27) {
+            // BK Ok
             for (uint i = 0; i < (degree - 1); i++) {
+                // BK Ok
                 shares = node.invitees[node.inviteeIndex[i]];
+                // BK Ok
                 reward = reward.add(shares.mul(1).div(100));
             }
         }
 
         // For degree > 27, referrer bonus remains constant at tier%
+        // BK Ok
         shares = node.invitees[node.inviteeIndex[degree - 1]];
+        // BK Ok
         reward = reward.add(shares.mul(tierPercentage).div(100));
 
+        // BK Ok
         return reward;
     }
 

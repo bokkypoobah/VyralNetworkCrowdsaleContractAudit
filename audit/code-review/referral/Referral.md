@@ -7,6 +7,7 @@ Source file [../../../contracts/referral/Referral.sol](../../../contracts/referr
 <hr />
 
 ```javascript
+// BK Ok
 pragma solidity ^0.4.18;
 
 /**
@@ -45,11 +46,13 @@ pragma solidity ^0.4.18;
  *                                                 +---+
  *
  */
+// BK Ok
 library Referral {
 
     /**
      * @dev A user in a referral graph
      */
+    // BK Next block Ok
     struct Node {
         /// This node was referred by...
         address referrer;
@@ -66,6 +69,7 @@ library Referral {
     /**
      * @dev A referral tree is a collection of Nodes.
      */
+    // BK Next block Ok
     struct Tree {
         /// Nodes
         mapping (address => Referral.Node) nodes;
@@ -76,6 +80,7 @@ library Referral {
     /**
      * @dev Find referrer of the given invitee.
      */
+    // BK Ok - Constant function
     function getReferrer (
         Tree storage self,
         address _invitee
@@ -84,12 +89,14 @@ library Referral {
         constant
         returns (address _referrer)
     {
+        // BK Ok
         _referrer = self.nodes[_invitee].referrer;
     }
 
     /**
      * @dev Number of entries in referral tree.
      */
+    // BK Ok - Constant function
     function getTreeSize (
         Tree storage self
     )
@@ -97,12 +104,14 @@ library Referral {
         constant
         returns (uint _size)
     {
+        // BK Ok
         _size = self.treeIndex.length;
     }
 
     /**
      * @dev Creates a new node representing an invitee and adds to a node's list of invitees.
      */
+    // BK Ok - Internal function
     function addInvitee (
         Tree storage self,
         address _referrer,
@@ -111,15 +120,22 @@ library Referral {
     )
         internal
     {
+        // BK Ok
         Node memory inviteeNode;
+        // BK Next 3 Ok
         inviteeNode.referrer = _referrer;
         inviteeNode.shares = _shares;
         inviteeNode.exists = true;
+        // BK Ok
         self.nodes[_invitee] = inviteeNode;
+        // BK Ok
         self.treeIndex.push(_invitee);
 
+        // BK Ok
         if (self.nodes[_referrer].exists == true) {
+            // BK Ok
             self.nodes[_referrer].invitees[_invitee] = _shares;
+            // BK Ok
             self.nodes[_referrer].inviteeIndex.push(_invitee);
         }
     }

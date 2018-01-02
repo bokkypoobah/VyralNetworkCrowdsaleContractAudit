@@ -1,10 +1,21 @@
 # Vyral Network Crowdsale Contract Audit
 
-Status: Work in progress
+Status: Audit almost completed, with one outstanding query
+
+<br />
 
 ## Summary
 
-Commits [1306a68](https://github.com/vyralnetwork/vyral/commit/1306a688cddba31cce19b0cb149b2f4e38aa54bb).
+[Vyral Network](https://vyral.network) intends to run a crowdsale commencing in Dec 2017.
+
+Bok Consulting Pty Ltd was commissioned to perform an audit on the Vyral Network's crowdsale and token Ethereum smart contract.
+
+This audit has been conducted on Vyral Network's source code in commit
+[1306a68](https://github.com/vyralnetwork/vyral/commit/1306a688cddba31cce19b0cb149b2f4e38aa54bb).
+
+TODO - Check for potential vulnerabilities have been identified in the crowdsale and token contract.
+
+<br />
 
 ### Deployed Contracts
 
@@ -30,6 +41,87 @@ https://etherscan.io/address/0x3bbc4826daf4ac26c4365e83299db54015341512#code
 
 ## Table Of Contents
 
+* [Summary](#summary)
+* [Recommendations](#recommendations)
+* [Potential Vulnerabilities](#potential-vulnerabilities)
+* [Scope](#scope)
+* [Limitations](#limitations)
+* [Due Diligence](#due-diligence)
+* [Risks](#risks)
+* [Testing](#testing)
+* [Code Review](#code-review)
+
+<br />
+
+<hr />
+
+## Recommendations
+
+* **LOW IMPORTANCE** *SafeMath* could possibly use `require(...)` instead of `assert(...)` to save on gas in the case of an error
+* **LOW IMPORTANCE** *Ownable* could be improved by using the `acceptOwnership(...)` [pattern](https://github.com/openanx/OpenANXToken/blob/master/contracts/Owned.sol#L51-L55)
+* **LOW IMPORTANCE** *HumanStandardToken* should have a `Transfer(address(0), msg.sender, _initialAmount)` event logged in the constructor
+* **MEDIUM IMPORTANCE** The logic in `Vesting.revokeSchedule(...)` seems to duplicate the amount of tokens that is transferred to 
+  `_addressToRevoke` and `_addressToRefund`
+  * [x] Developer has confirmed the bug. `amountRefundable = totalAmountVested.sub(vestingSchedule.amountWithdrawn);` should be
+    replaced with ` amountRefundable = vestingSchedule.totalAmount.sub(totalAmountVested);`
+  * [ ] BK to wait for changes to be updated in the repository, and review and retest
+
+<br />
+
+<hr />
+
+## Potential Vulnerabilities
+
+* [ ] TODO - Check for potential vulnerabilities have been identified in the crowdsale and token contract.
+
+<br />
+
+<hr />
+
+## Scope
+
+This audit is into the technical aspects of the crowdsale contracts. The primary aim of this audit is to ensure that funds
+contributed to these contracts are not easily attacked or stolen by third parties. The secondary aim of this audit is that
+ensure the coded algorithms work as expected. This audit does not guarantee that that the code is bugfree, but intends to
+highlight any areas of weaknesses.
+
+<br />
+
+<hr />
+
+## Limitations
+
+This audit makes no statements or warranties about the viability of the Vyral Network's business proposition, the individuals
+involved in this business or the regulatory regime for the business model.
+
+<br />
+
+<hr />
+
+## Due Diligence
+
+As always, potential participants in any crowdsale are encouraged to perform their due diligence on the business proposition
+before funding any crowdsales.
+
+Potential participants are also encouraged to only send their funds to the official crowdsale Ethereum address, published on
+the crowdsale beneficiary's official communication channel.
+
+Scammers have been publishing phishing address in the forums, twitter and other communication channels, and some go as far as
+duplicating crowdsale websites. Potential participants should NOT just click on any links received through these messages.
+Scammers have also hacked the crowdsale website to replace the crowdsale contract address with their scam address.
+ 
+Potential participants should also confirm that the verified source code on EtherScan.io for the published crowdsale address
+matches the audited source code, and that the deployment parameters are correctly set, including the constant parameters.
+
+<br />
+
+<hr />
+
+## Risks
+
+* This crowdsale contract has a low risk of having the ETH hacked or stolen, as any contributions by participants are immediately transferred
+  to the team wallet
+
 <br />
 
 <hr />
@@ -43,36 +135,26 @@ https://etherscan.io/address/0x3bbc4826daf4ac26c4365e83299db54015341512#code
 
 <hr />
 
-## Recommendations
-
-* **LOW IMPORTANCE** *SafeMath* could possibly use `require(...)` instead of `assert(...)` to save on gas in the case of an error
-* **LOW IMPORTANCE** *Ownable* could be improved by using the `acceptOwnership(...)` [pattern](https://github.com/openanx/OpenANXToken/blob/master/contracts/Owned.sol#L51-L55)
-* **LOW IMPORTANCE** *HumanStandardToken* should have a `Transfer(address(0), msg.sender, _initialAmount)` event logged in the constructor
-
-<br />
-
-<hr />
-
 ## Code Review
 
 * [x] [code-review/math/SafeMath.md](code-review/math/SafeMath.md)
   * [x] library SafeMath
 * [x] [code-review/traits/Ownable.md](code-review/traits/Ownable.md)
   * [x] contract Ownable
-* [ ] [code-review/referral/Referral.md](code-review/referral/Referral.md)
-  * [ ] library Referral
-* [ ] [code-review/referral/TieredPayoff.md](code-review/referral/TieredPayoff.md)
-  * [ ] library TieredPayoff
-* [ ] [code-review/Campaign.md](code-review/Campaign.md)
-  * [ ] contract Campaign is Ownable
-* [ ] [code-review/PresaleBonuses.md](code-review/PresaleBonuses.md)
-  * [ ] library PresaleBonuses
-* [ ] [code-review/Share.md](code-review/Share.md)
-  * [ ] contract Share is HumanStandardToken, Ownable
-* [ ] [code-review/Vesting.md](code-review/Vesting.md)
-  * [ ] contract Vesting is Ownable
-* [ ] [code-review/VyralSale.md](code-review/VyralSale.md)
-  * [ ] contract VyralSale is Ownable
+* [x] [code-review/referral/Referral.md](code-review/referral/Referral.md)
+  * [x] library Referral
+* [x] [code-review/referral/TieredPayoff.md](code-review/referral/TieredPayoff.md)
+  * [x] library TieredPayoff
+* [x] [code-review/Campaign.md](code-review/Campaign.md)
+  * [x] contract Campaign is Ownable
+* [x] [code-review/PresaleBonuses.md](code-review/PresaleBonuses.md)
+  * [x] library PresaleBonuses
+* [x] [code-review/Share.md](code-review/Share.md)
+  * [x] contract Share is HumanStandardToken, Ownable
+* [x] [code-review/Vesting.md](code-review/Vesting.md)
+  * [x] contract Vesting is Ownable
+* [x] [code-review/VyralSale.md](code-review/VyralSale.md)
+  * [x] contract VyralSale is Ownable
 
 <br />
 
@@ -376,3 +458,9 @@ VyralSale.sol:88:44: Warning: Initial value for constant variable has to be comp
     uint public constant SALE_ALLOCATION = TOTAL_SUPPLY.div(7).mul(3);
                                            ^------------------------^
 ```
+
+<br />
+
+<br />
+
+(c) BokkyPooBah / Bok Consulting Pty Ltd for Vyral Network - Jan 10 2017. The MIT Licence.
