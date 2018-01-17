@@ -1,7 +1,5 @@
 # Vyral Network Crowdsale Contract Audit
 
-Status: Audit almost completed, with one outstanding query
-
 <br />
 
 ## Summary
@@ -11,17 +9,16 @@ Status: Audit almost completed, with one outstanding query
 Bok Consulting Pty Ltd was commissioned to perform an audit on the Vyral Network's crowdsale and token Ethereum smart contract.
 
 This audit has been conducted on Vyral Network's source code in commit
-[1306a68](https://github.com/vyralnetwork/vyral/commit/1306a688cddba31cce19b0cb149b2f4e38aa54bb).
+[1306a68](https://github.com/vyralnetwork/vyral/commit/1306a688cddba31cce19b0cb149b2f4e38aa54bb) and
+[1c5b12d](https://github.com/vyralnetwork/vyral/commit/1c5b12d46532f516984904e2869ff664112353e8).
 
-TODO - Check for potential vulnerabilities have been identified in the crowdsale and token contract.
+No potential vulnerabilities have been identified in the crowdsale, token, campaign and vesting contracts.
 
 <br />
 
 ### Deployed Contracts
 
 The following contracts were deployed to the Ethereum mainnet, but the source code was not verified at the addresses except for the MultiSig:
-
-https://etherscan.io/address/0x3bbc4826daf4ac26c4365e83299db54015341512#code
 
 * Campaign:      [0x1f204b70832b0df002ff7500e7b2fac62b5dbe33](https://etherscan.io/address/0x1f204b70832b0df002ff7500e7b2fac62b5dbe33#code)
 * DateTime:      [0x3bbc4826daf4ac26c4365e83299db54015341512](https://etherscan.io/address/0x3bbc4826daf4ac26c4365e83299db54015341512#code)
@@ -32,6 +29,8 @@ https://etherscan.io/address/0x3bbc4826daf4ac26c4365e83299db54015341512#code
 * Share:         [0x6f69ef58ddec9cd6ee428253c607a0acd13da05f](https://etherscan.io/address/0x6f69ef58ddec9cd6ee428253c607a0acd13da05f#code)
 * TieredPayoff:  [0x57efbaf2e135ad73018aed5f07273b7a0bb2ab54](https://etherscan.io/address/0x57efbaf2e135ad73018aed5f07273b7a0bb2ab54#code)
 * Vesting:       [0x6dfbeaf92d8d4455d74bc56bd37a165c5970a4d7](https://etherscan.io/address/0x6dfbeaf92d8d4455d74bc56bd37a165c5970a4d7#code)
+  * [x] Note that this original deployed Vesting contract has a bug and will need to be replaced with the fixes in
+    [1c5b12d](https://github.com/vyralnetwork/vyral/commit/1c5b12d46532f516984904e2869ff664112353e8)
 * VyralSale:     [0x708352cd28ea06e6bbd5c1a9408b4966ac1226e4](https://etherscan.io/address/0x708352cd28ea06e6bbd5c1a9408b4966ac1226e4#code)
 
 
@@ -63,8 +62,8 @@ https://etherscan.io/address/0x3bbc4826daf4ac26c4365e83299db54015341512#code
 * **MEDIUM IMPORTANCE** The logic in `Vesting.revokeSchedule(...)` seems to duplicate the amount of tokens that is transferred to 
   `_addressToRevoke` and `_addressToRefund`
   * [x] Developer has confirmed the bug. `amountRefundable = totalAmountVested.sub(vestingSchedule.amountWithdrawn);` should be
-    replaced with ` amountRefundable = vestingSchedule.totalAmount.sub(totalAmountVested);`
-  * [ ] BK to wait for changes to be updated in the repository, and review and retest
+    replaced with `amountRefundable = vestingSchedule.totalAmount.sub(totalAmountVested);`
+  * [x] Fixed in [1c5b12d](https://github.com/vyralnetwork/vyral/commit/1c5b12d46532f516984904e2869ff664112353e8)
 
 <br />
 
@@ -72,7 +71,7 @@ https://etherscan.io/address/0x3bbc4826daf4ac26c4365e83299db54015341512#code
 
 ## Potential Vulnerabilities
 
-* [ ] TODO - Check for potential vulnerabilities have been identified in the crowdsale and token contract.
+No potential vulnerabilities have been identified in the crowdsale, token, campaign and vesting contracts.
 
 <br />
 
@@ -128,8 +127,29 @@ matches the audited source code, and that the deployment parameters are correctl
 
 ## Testing
 
-[ethereum-datetime-contracts/api.sol](ethereum-datetime-contracts/api.sol) and [ethereum-datetime-contracts/DateTime.sol](ethereum-datetime-contracts/DateTime.sol) commit
-[1c8e514](https://github.com/pipermerriam/ethereum-datetime/commit/1c8e514adc57673d367ab91af4fd86186f1ea7f4).
+The following functions were tested using the script [test/01_test1.sh](test/01_test1.sh) with the summary results saved
+in [test/test1results.txt](test/test1results.txt) and the detailed output saved in [test/test1output.txt](test/test1output.txt):
+
+* [x] Deploy SafeMath library
+* [x] Deploy DateTime contract
+* [x] Deploy PresaleBonuses contract
+* [x] Deploy Referral contract
+* [x] Deploy Share token contract
+* [x] Deploy TieredPayoff library
+* [x] Deploy Vesting contract
+* [x] Deploy Campaign contract
+* [x] Deploy VyralSale contract
+* [x] Link contracts together
+* [x] Start presale
+* [x] Send presale contributions
+* [x] End presale
+* [x] Start crowdsale
+* [x] Send crowdsale contributions with referrals
+
+Details of the testing environment can be found in [test](test).
+
+[ethereum-datetime-contracts/api.sol](ethereum-datetime-contracts/api.sol) and [ethereum-datetime-contracts/DateTime.sol](ethereum-datetime-contracts/DateTime.sol)
+from commit [1c8e514](https://github.com/pipermerriam/ethereum-datetime/commit/1c8e514adc57673d367ab91af4fd86186f1ea7f4) were used in the testing.
 
 <br />
 
@@ -463,4 +483,4 @@ VyralSale.sol:88:44: Warning: Initial value for constant variable has to be comp
 
 <br />
 
-(c) BokkyPooBah / Bok Consulting Pty Ltd for Vyral Network - Jan 10 2017. The MIT Licence.
+(c) BokkyPooBah / Bok Consulting Pty Ltd for Vyral Network - Jan 18 2017. The MIT Licence.

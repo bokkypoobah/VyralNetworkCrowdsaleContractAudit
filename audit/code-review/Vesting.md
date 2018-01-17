@@ -253,12 +253,10 @@ contract Vesting is Ownable {
             // Vesting has started, need to figure out how much hasn't been vested yet
             // BK Ok
             uint totalAmountVested = calculateTotalAmountVested(vestingSchedule);
-            // BK NOTE - The calculations below don't look correct as it can result in more tokens being transferred out of the
-            // BK NOTE - Vesting contract than is expected
             // BK Ok
             amountWithdrawable = totalAmountVested.sub(vestingSchedule.amountWithdrawn);
             // BK Ok
-            amountRefundable = totalAmountVested.sub(vestingSchedule.amountWithdrawn);
+            amountRefundable = vestingSchedule.totalAmount.sub(totalAmountVested);
 
             // BK Ok
             delete vestingSchedules[_addressToRevoke];
